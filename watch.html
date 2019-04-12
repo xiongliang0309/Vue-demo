@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>watch属性监听</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="km">km=
+        <input type="text" v-model="m">m
+    </div>
+    <p id="info"></p>
+
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                km:0,
+                m:0
+            },
+            watch:{
+                km:function(val){
+                    this.km=val;
+                    this.m=this.km*1000
+                },
+                m:function(val){
+                    this.m=val;
+                    this.km=this.m/1000
+                }
+            }
+        })
+
+        app.$watch('km',function(newValue,oldValue){
+            document.getElementById('info').innerHTML="修改前值为："+oldValue+",修改后的值为："+newValue;
+        })
+    </script>
+</body>
+
+</html>

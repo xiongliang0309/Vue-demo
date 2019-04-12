@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <todo-item v-for="item in todolist" v-bind:todo="item" v-bind:key="item.id" />
+        </ul>
+    </div>
+
+    <script>
+        Vue.component('todo-item', {
+            props: ['todo'],    //todo-item接收一个名为todo的prop
+            template: '<li>{{todo.text}}</li>'
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                todolist: [
+                    {
+                        id: 1,
+                        text: '吃饭'
+                    },
+                    {
+                        id: 2,
+                        text: '睡觉'
+                    },
+                    {
+                        id: 3,
+                        text: '打豆豆'
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

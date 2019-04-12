@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>VueJS Tutorials</title>
+        <link href="styles.css" rel="stylesheet" />
+        <script src="https://unpkg.com/vue"></script>
+    </head>
+    <body>
+        <div id="vue-app">
+            <!-- 图片 -->
+            <!-- 给div绑定一个class，当ended为true的时候，brust显示，换一张图片 -->
+            <div id="bag" v-bind:class="{ burst: ended }"></div>
+
+            <!-- 进度条-->
+            <div id="bag-health">
+                <div v-bind:style="{ width: health + '%' }"></div>
+                <div ></div>
+            </div>
+
+            <!-- 按钮 -->
+            <div id="controls">
+                <button v-on:click="hit" v-show="!ended">打击</button>
+                <button v-on:click="restart">重新开始</button>
+            </div>
+        </div>
+    </body>
+
+    <script src="app.js"></script>
+</html>
